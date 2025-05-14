@@ -5,6 +5,19 @@ using TravelAgent.Data;
 Env.Load();
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowTravel",
+        policy => policy
+        .WithOrigins("http://localhost:5173")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        );
+
+
+});
+
+
 var connectionString = Env.GetString("DB_CONNECTION");
 
 // Configure the database connection
@@ -15,6 +28,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+app.UseCors("AllowTravel");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
