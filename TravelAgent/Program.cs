@@ -4,12 +4,12 @@ using TravelAgent.Data;
 
 Env.Load();
 var builder = WebApplication.CreateBuilder(args);
-//
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowTravel",
         policy => policy
-        .AllowAnyOrigin()
+        .WithOrigins("http://localhost:5173")
         .AllowAnyHeader()
         .AllowAnyMethod()
         );
