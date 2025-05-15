@@ -24,6 +24,17 @@ namespace TravelAgent.Controllers
             return Ok(packages);
             
         }
+        [HttpGet("Search")]
+        public async Task<IActionResult> search([FromQuery]string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return BadRequest("Cant be empty");
+            }
+            var res = await _context.TravelPackages.Where(p => EF.Functions.Like(p.Name, $"%{name.ToLower()}%")).ToListAsync();
+
+            return Ok(res);
+        }
 
     }
 }
