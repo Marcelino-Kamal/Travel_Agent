@@ -22,8 +22,11 @@ namespace TravelAgent.Models
         public decimal price { get; set; }
             
         [Required]
+        [DataType(DataType.Date)]
         public DateTime DateTime { get; set; }
 
+        [Required]
+        public string Destination {  get; set; }
 
 
 
