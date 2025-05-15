@@ -4,7 +4,7 @@ using TravelAgent.Data;
 
 Env.Load();
 var builder = WebApplication.CreateBuilder(args);
-
+//
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowTravel",
