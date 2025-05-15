@@ -9,7 +9,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowTravel",
         policy => policy
-        .WithOrigins("http://localhost:5173")
+        .AllowAnyOrigin()
         .AllowAnyHeader()
         .AllowAnyMethod()
         );
